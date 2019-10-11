@@ -5,4 +5,12 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="wordlist.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wordlist.txt" />
+  </ItemGroup>
+
 </Project>

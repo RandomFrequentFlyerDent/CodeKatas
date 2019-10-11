@@ -12,21 +12,20 @@ namespace Anagrams
 
             if (words.Any())
             {
+                var tempDict = words
+                    .GroupBy(w => String.Concat(w.OrderBy(c => c)))
+                    .ToDictionary(g => g.Key, g => g.ToList());
+
                 foreach (var word in words)
                 {
-                    anagrams.Add(word, GetAnagrams(word, words));
+                    var tempWord = String.Concat(word.OrderBy(c => c));
+                    var tempList = tempDict.GetValueOrDefault(tempWord).ToList();
+                    tempList.Remove(word);
+                    anagrams.Add(word, tempList);
                 }
             }
 
             return anagrams;
-        }
-
-        private static List<string> GetAnagrams(string word, List<string> words)
-        {
-            var tempWords = words.ToList();
-            tempWords.Remove(word);
-            var tempWord = String.Concat(word.OrderBy(c => c));
-            return tempWords.Where(w => String.Concat(w.OrderBy(c => c)).Equals(tempWord)).ToList();
         }
     }
 
