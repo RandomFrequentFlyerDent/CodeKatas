@@ -27,6 +27,21 @@ namespace Anagrams
 
             return anagrams;
         }
-    }
 
+        public static string GetMostWords(Dictionary<string, List<string>> anagrams)
+        {
+            var mostWordsEntry = anagrams.OrderByDescending(a => a.Value.Count).First();
+            var list = mostWordsEntry.Value.ToList();
+            list.Add(mostWordsEntry.Key);
+            return String.Join(" ", list.ToArray());
+        }
+
+        public static string GetLongestWords(Dictionary<string, List<string>> anagrams)
+        {
+            var longestWordEntry = anagrams.OrderByDescending(a => a.Key.Length).First();
+            var list = longestWordEntry.Value.ToList();
+            list.Add(longestWordEntry.Key);
+            return String.Join(" ", list.ToArray());
+        }
+    }
 }

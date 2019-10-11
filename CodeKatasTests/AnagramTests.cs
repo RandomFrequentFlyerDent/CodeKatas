@@ -78,5 +78,33 @@ namespace CodeKatasTests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [Test]
+        public void GetMostWords()
+        {
+            var dict = new Dictionary<string, List<string>>();
+            dict.Add("most", new List<string> { "bla", "bla2", "bla3" });
+            dict.Add("less", new List<string> { "bla", "bla2" });
+            dict.Add("least", new List<string> { "bla" });
+
+            var actual = Logic.GetMostWords(dict);
+            var expected = "bla bla2 bla3 most";
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void GetLongestWords()
+        {
+            var dict = new Dictionary<string, List<string>>();
+            dict.Add("longest99", new List<string> { "blaaaaaaa", "bla222222", "bla33333" });
+            dict.Add("short", new List<string> { "blaaa", "bla222" });
+            dict.Add("sho", new List<string> { "bla" });
+
+            var actual = Logic.GetLongestWords(dict);
+            var expected = "blaaaaaaa bla222222 bla33333 longest99";
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

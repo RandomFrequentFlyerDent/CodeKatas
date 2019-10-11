@@ -19,6 +19,8 @@ namespace Anagrams
             TimeSpan elapsedTime = new TimeSpan(end - begin);
             Console.WriteLine($"Number of words: {anagrams.Keys.Count}");
             Console.WriteLine($"Duration: {elapsedTime.TotalSeconds:N2} seconds");
+            Console.WriteLine($"Set of longest words: {Logic.GetLongestWords(anagrams)}");
+            Console.WriteLine($"Set of most words: {Logic.GetMostWords(anagrams)}");
         }
 
         private static List<string> LoadList()
